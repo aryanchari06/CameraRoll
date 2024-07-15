@@ -1,0 +1,15 @@
+#sidebar-container{
+    animation: slideIn 0.5s ease-in-out;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes slideIn {
+    0%{
+        transform: translateX(-200px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+
+}
