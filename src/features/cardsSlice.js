@@ -8,11 +8,11 @@ const initialState = {
         url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         // comments: ['good click', 'nice picture']
         comments: [
-            {
-                id: '1a',
-                user: 'User1',
-                comment: 'good click'
-            },
+            // {
+            //     id: '1a',
+            //     user: 'User1',
+            //     comment: 'good click'
+            // },
 
         ]
 
@@ -23,11 +23,11 @@ const initialState = {
         url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         // comments: ['good click', 'nice picture']
         comments: [
-            {
-                id: '1a',
-                user: 'User1',
-                comment: 'good click'
-            },
+            // {
+            //     id: '1a',
+            //     user: 'User1',
+            //     comment: 'good click'
+            // },
 
         ]
 
