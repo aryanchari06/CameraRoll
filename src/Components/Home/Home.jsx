@@ -11,18 +11,18 @@ function Home() {
   return (
     <div className='bg-gray-400 m-0 p-10 min-h-[80vh]'>
       <div className='flex gap-4'>
-        <ul>
+        <ul className='flex gap-4'>
 
           {
             posts.map((post) => (
               <li key={post.id}>
-                <PostCard 
-                caption={post.caption}
-                imageUrl={post.url}
-                comments={post.comments}
-                id={post.id } />
+                <PostCard
+                  caption={post.caption}
+                  imageUrl={post.url}
+                  comments={post.comments}
+                  id={post.id} />
               </li>
-          ))
+            ))
           }
         </ul>
         <AddPostCard />

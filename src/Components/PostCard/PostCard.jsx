@@ -16,7 +16,7 @@ function PostCard({
   
   const [userID, setUserID] = useState('')
   const [comment, setComment] = useState('')
-  
+
   const [display, setDisplay] = useState('hidden')
 
 
@@ -66,14 +66,13 @@ function PostCard({
               }}
             />
             <div className='flex gap-1'>
-
               <button
                 className='bg-black text-white rounded-md px-2 py-1 text-sm'
                 onClick={(e) => {
                   e.preventDefault()
                   if (comment === '') return
-                  dispatch(addComment({ userID, comment }))
-                  // console.log(comments)
+                  dispatch(addComment({ id, userID, comment }))
+                  // console.log(id)
                 }}>Post</button>
               <button
                 className='bg-black text-white rounded-md px-2  text-sm'

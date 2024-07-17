@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { comment } from "postcss";
 
 const initialState = {
     posts: [{
@@ -15,7 +16,23 @@ const initialState = {
 
         ]
 
-    }]
+    },
+    {
+        id: 2,
+        caption: 'Second post',
+        url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        // comments: ['good click', 'nice picture']
+        comments: [
+            {
+                id: '1a',
+                user: 'User1',
+                comment: 'good click'
+            },
+
+        ]
+
+    }
+    ]
 }
 
 export const cardSlice = createSlice({
@@ -32,18 +49,14 @@ export const cardSlice = createSlice({
         },
 
         addComment: (state, action) => {
-            const { postID, user, newComment } = action.payload
-            const post = state.posts.find(post => post.id === postID)
-
+            const postID = action.payload.id
+            const post = state.posts.find((post)=>(post.id===postID))
             const addedComment = {
                 id: nanoid(),
-                user: user,
-                comment: newComment,
+                user: action.payload.userID,
+                comment: action.payload.comment
             }
-            // post.comments.push(addedComment)
-            console.log(addedComment)
-            // console.log(postID)
-            // console.log(addedComment)
+            post.comments.push(addedComment)
         }
     }
 })
