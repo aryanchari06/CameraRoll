@@ -1,37 +1,36 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { comment } from "postcss";
 
+let postid = 2;
 const initialState = {
     posts: [{
         id: 1,
         caption: 'First post',
         url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        // comments: ['good click', 'nice picture']
         comments: [
             // {
             //     id: '1a',
             //     user: 'User1',
             //     comment: 'good click'
             // },
-
         ]
 
     },
-    {
-        id: 2,
-        caption: 'Second post',
-        url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        // comments: ['good click', 'nice picture']
-        comments: [
-            // {
-            //     id: '1a',
-            //     user: 'User1',
-            //     comment: 'good click'
-            // },
+    // {
+    //     id: 2,
+    //     caption: 'Second post',
+    //     url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //     // comments: ['good click', 'nice picture']
+    //     comments: [
+    //         // {
+    //         //     id: '1a',
+    //         //     user: 'User1',
+    //         //     comment: 'good click'
+    //         // },
 
-        ]
+    //     ]
 
-    }
+    // }
     ]
 }
 
@@ -41,9 +40,10 @@ export const cardSlice = createSlice({
     reducers: {
         addCard: (state, action) => {
             const post = {
-                id: nanoid(),
-                caption: action.payload,
-                url: action.payload
+                id: ++postid,
+                caption: action.payload.caption,
+                url: action.payload.imageURL,
+                comments:[],
             }
             state.posts.push(post)
         },

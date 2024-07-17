@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CreatePostForm from '../CreatePostForm/CreatePostForm'
 import PostCard from '../PostCard/PostCard'
 import AddPostCard from '../PostCard/AddPostCard'
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 function Home() {
 
+  const [createForm, setCreateForm] = useState('hidden')
   const posts = useSelector(state => state.posts)
   // console.log(posts)
   return (
@@ -25,9 +26,17 @@ function Home() {
             ))
           }
         </ul>
-        <AddPostCard />
+        <div
+          onClick={() => { setCreateForm('block') }}
+          id='add-post-card-container'
+        >
+          <AddPostCard />
+
+        </div>
       </div>
-      <CreatePostForm />
+      <CreatePostForm
+        display={createForm}
+      />
     </div>
   )
 }
