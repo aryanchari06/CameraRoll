@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreatePostForm from '../CreatePostForm/CreatePostForm'
 import PostCard from '../PostCard/PostCard'
 import AddPostCard from '../PostCard/AddPostCard'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCard } from '../../features/cardsSlice'
 
 function Home() {
 
   const [createForm, setCreateForm] = useState('hidden')
   const posts = useSelector(state => state.posts)
+  const dispatch = useDispatch()
   // console.log(posts)
+  
+
   return (
     <div className='bg-gray-400 m-0 p-10 min-h-[80vh]'>
       <div className='flex gap-4'>

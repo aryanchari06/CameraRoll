@@ -1,36 +1,37 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { comment } from "postcss";
 
-let postid = 2;
+let postid = 0;
 const initialState = {
-    posts: [{
-        id: 1,
-        caption: 'First post',
-        url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        comments: [
-            // {
-            //     id: '1a',
-            //     user: 'User1',
-            //     comment: 'good click'
-            // },
-        ]
+    posts: [
+        // {
+        //     id: 1,
+        //     caption: 'First post',
+        //     url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        //     comments: [
+        //         // {
+        //         //     id: '1a',
+        //         //     user: 'User1',
+        //         //     comment: 'good click'
+        //         // },
+        //     ]
 
-    },
-    // {
-    //     id: 2,
-    //     caption: 'Second post',
-    //     url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    //     // comments: ['good click', 'nice picture']
-    //     comments: [
-    //         // {
-    //         //     id: '1a',
-    //         //     user: 'User1',
-    //         //     comment: 'good click'
-    //         // },
+        // },
+        // {
+        //     id: 2,
+        //     caption: 'Second post',
+        //     url: 'https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        //     // comments: ['good click', 'nice picture']
+        //     comments: [
+        //         // {
+        //         //     id: '1a',
+        //         //     user: 'User1',
+        //         //     comment: 'good click'
+        //         // },
 
-    //     ]
+        //     ]
 
-    // }
+        // }
     ]
 }
 
@@ -43,14 +44,14 @@ export const cardSlice = createSlice({
                 id: ++postid,
                 caption: action.payload.caption,
                 url: action.payload.imageURL,
-                comments:[],
+                comments: [],
             }
             state.posts.push(post)
         },
 
         addComment: (state, action) => {
             const postID = action.payload.id
-            const post = state.posts.find((post)=>(post.id===postID))
+            const post = state.posts.find((post) => (post.id === postID))
             const addedComment = {
                 id: nanoid(),
                 user: action.payload.userID,
