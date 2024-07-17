@@ -1,35 +1,25 @@
 import React, { useState } from 'react'
 
-function PostCard() {
+function PostCard({
+  imageUrl,
+  caption,
+  comments,
+}) {
 
   const [likes, setLikes] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [comment, setComment] = useState('')
 
-  const comments = [
-    {
-      'user': 'User1',
-      'comment': 'Wow good click'
-    },
-    {
-      'user': 'User2',
-      'comment': 'good click'
-    },
-    {
-      'user': 'User3',
-      'comment': 'nice click'
-    },
-  ]
 
   const [display, setDisplay] = useState('hidden')
   return (
     <div className='bg-white shadow-md text-black w-[23rem] rounded-lg '>
       <div id="post" className='p-8 flex flex-col gap-2'>
         <img
-          src="https://images.pexels.com/photos/25858940/pexels-photo-25858940/free-photo-of-shape-photography-triangle-in-the-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src={imageUrl}
           alt=""
           className='h-80 rounded-md' />
-        <h2 className='text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, est.</h2>
+        <h2 className='text-lg'>{caption}</h2>
         <div id="actions" className='flex gap-4 items-start'>
           <button
             className='text-xl'
@@ -81,7 +71,7 @@ function PostCard() {
           <ul>
             {
               comments.map((comment) => (
-                <li><span className='font-semibold'>{comment.user}: </span>{comment.comment}</li>
+                <li key={comment.id}><span className='font-semibold'>{comment.user}: </span>{comment.comment}</li>
               ))
             }
           </ul>
