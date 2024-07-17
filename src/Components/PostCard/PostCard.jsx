@@ -46,7 +46,9 @@ function PostCard({
           <button
             className='text-xl'
             onClick={() => display === 'hidden' ? setDisplay('block') : setDisplay('hidden')}
-          ><i class="fa-regular fa-comment"></i> 0</button>
+          ><i class="fa-regular fa-comment"></i> {
+            posts[id-1].comments.length
+          }</button>
 
           <div className={`shadow-md rounded-md top-0 left-28 flex-col flex gap-1 p-1 ${display} bg-gray-200`}>
             <input
@@ -69,6 +71,7 @@ function PostCard({
               <button
                 className='bg-black text-white rounded-md px-2 py-1 text-sm'
                 onClick={(e) => {
+                  console.log(posts[id-1])
                   e.preventDefault()
                   if (comment === '') return
                   dispatch(addComment({ id, userID, comment }))
