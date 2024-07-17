@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 function Home() {
 
   const posts = useSelector(state => state.posts)
-  console.log(posts)
+  // console.log(posts)
   return (
     <div className='bg-gray-400 m-0 p-10 min-h-[80vh]'>
       <div className='flex gap-4'>
@@ -19,7 +19,8 @@ function Home() {
                 <PostCard 
                 caption={post.caption}
                 imageUrl={post.url}
-                comments={post.comments} />
+                comments={post.comments}
+                id={post.id } />
               </li>
           ))
           }

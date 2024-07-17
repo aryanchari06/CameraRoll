@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addComment } from '../../features/cardsSlice'
 
 function PostCard({
   imageUrl,
   caption,
   comments,
+  id
 }) {
+  const posts = useSelector(state => state.posts)
+  const dispatch = useDispatch()
 
   const [likes, setLikes] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
+  
+  const [userID, setUserID] = useState('')
   const [comment, setComment] = useState('')
-
-
+  
   const [display, setDisplay] = useState('hidden')
+
+
   return (
     <div className='bg-white shadow-md text-black w-[23rem] rounded-lg '>
       <div id="post" className='p-8 flex flex-col gap-2'>
@@ -44,6 +52,14 @@ function PostCard({
             <input
               type='text'
               className='overflow-auto  outline-none bg-transparent p-1'
+              placeholder='User ID...'
+              onChange={(e) => {
+                setUserID(e.currentTarget.value)
+              }}
+            />
+            <input
+              type='text'
+              className='overflow-auto  outline-none bg-transparent p-1'
               placeholder='Comment here...'
               onChange={(e) => {
                 setComment(e.currentTarget.value)
@@ -53,10 +69,11 @@ function PostCard({
 
               <button
                 className='bg-black text-white rounded-md px-2 py-1 text-sm'
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
                   if (comment === '') return
-                  console.log(comment, comments)
-                  // comments.map((item)=>([...item, { }]))
+                  dispatch(addComment({ userID, comment }))
+                  // console.log(comments)
                 }}>Post</button>
               <button
                 className='bg-black text-white rounded-md px-2  text-sm'
